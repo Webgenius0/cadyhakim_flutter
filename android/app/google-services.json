@@ -1,0 +1,70 @@
+{
+  "project_info": {
+    "project_number": "24830341355",
+    "project_id": "numynd-7d5bc",
+    "storage_bucket": "numynd-7d5bc.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:24830341355:android:2cabbe0817ccca765a0eae",
+        "android_client_info": {
+          "package_name": "com.cadyhakim.numynd"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "24830341355-d8bmnrikh5p7ffafpm62k0dt8sn5m483.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cadyhakim.numynd",
+            "certificate_hash": "40eaba276b1150e5552536fcf94d3a89c276c42d"
+          }
+        },
+        {
+          "client_id": "24830341355-j93lv9ojjqaadqsd5qf4sg7meb124jea.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cadyhakim.numynd",
+            "certificate_hash": "6bffd7852f26a1b30035353a50fdc8a58d875bdf"
+          }
+        },
+        {
+          "client_id": "24830341355-s3eb58b3riedf6n6eop35q4ilkl0shai.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cadyhakim.numynd",
+            "certificate_hash": "c24a86efddf2418888494cbb67f3ca5b9a08899a"
+          }
+        },
+        {
+          "client_id": "24830341355-svrlfhn6020boeik4uhru4fdcu4obem9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCeo6W4iePnxus7x0BUvMAoQAobuaJMZ3M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "24830341355-svrlfhn6020boeik4uhru4fdcu4obem9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "24830341355-8mqhn2ftvdg6hosnn131bvttgfucrrup.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.cadyhakim.numynd"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
