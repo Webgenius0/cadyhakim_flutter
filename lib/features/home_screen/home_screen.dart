@@ -274,7 +274,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   UIHelper.verticalSpace(15.h),
                   SizedBox(
-                    height: 200.h,
+                    height: 201.h,
                     child: ListView.separated(
                       scrollDirection: Axis.horizontal,
                       itemCount: _allTodayAudios.length.clamp(0, 5),
@@ -318,7 +318,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               children: [
                                 CachedNetworkImage(
                                   imageUrl: song.thumbnailUrl ?? "",
-                                  height: 197.h,
+                                  height: double.infinity,
                                   width: 180.w,
                                   fit: BoxFit.cover,
                                   placeholder: (context, url) => Container(

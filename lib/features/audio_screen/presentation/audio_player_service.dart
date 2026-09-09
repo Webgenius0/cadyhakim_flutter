@@ -1,7 +1,14 @@
 // lib/services/audio_player_service.dart
+// ignore_for_file: undefined_hidden_name
+
 import 'dart:async';
 import 'dart:developer';
-import 'package:audioplayers/audioplayers.dart';
+import 'package:audioplayers/audioplayers.dart'
+    hide
+        AVAudioSessionCategory,
+        AVAudioSessionCategoryOptions,
+        AVAudioSessionMode;
+import 'package:audio_session/audio_session.dart';
 import 'package:flutter/foundation.dart';
 import 'package:numynd/networks/api_acess.dart';
 
@@ -49,10 +56,28 @@ class AudioPlayerService extends ChangeNotifier {
     return h > 0 ? '$h:$m:$s' : '$m:$s';
   }
 
-  /// একবারই attach হবে (multiple screens থেকে বারবার listener বসবে না)
   Future<void> _attachListenersOnce() async {
     if (_listenersAttached) return;
     _listenersAttached = true;
+
+    // === Background audio session কনফিগার করুন ===
+    final session = await AudioSession.instance;
+    await session.configure(AudioSessionConfiguration(
+      avAudioSessionCategory: AVAudioSessionCategory.playback,
+      avAudioSessionCategoryOptions: AVAudioSessionCategoryOptions.duckOthers,
+      avAudioSessionMode: AVAudioSessionMode.defaultMode,
+      androidAudioAttributes: const AndroidAudioAttributes(
+        contentType: AndroidAudioContentType.music,
+        usage: AndroidAudioUsage.media,
+      ),
+      androidAudioFocusGainType: AndroidAudioFocusGainType.gain,
+      androidWillPauseWhenDucked: true,
+    ));
+
+    // এইটাই মিসিং ছিল — session configure করলেই হয় না,
+    // explicitly active করতে হয়, নাহলে background এ গেলেই iOS
+    // session suspend করে দেয় আর audio বন্ধ হয়ে যায়।
+    await session.setActive(true);
 
     await player.setReleaseMode(ReleaseMode.stop);
 

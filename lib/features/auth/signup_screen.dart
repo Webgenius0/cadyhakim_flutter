@@ -138,161 +138,163 @@ class _SignupScreenState extends State<SignupScreen> {
   Widget build(BuildContext context) {
     return BackgroundScaffolds(
       backgroundImage: AppImages.appBgOne,
-      body: Column(
-        children: [
-          UIHelper.verticalSpace(20.h),
-          Image.asset(
-            AppImages.appLogo,
-            height: 80.h,
-            width: 80.w,
-          ),
-          UIHelper.verticalSpace(20.h),
-          Text(
-            'Create Your NuMynd Account',
-            style: TextFontStyle.textStyle12w400LatoItalic.copyWith(
-              fontSize: 24.sp,
-              fontWeight: FontWeight.bold,
-              color: AppColor.cFFFFFF,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            UIHelper.verticalSpace(20.h),
+            Image.asset(
+              AppImages.appLogo,
+              height: 80.h,
+              width: 80.w,
             ),
-          ),
-          UIHelper.verticalSpace(40.h),
-
-          // Glass container
-          Container(
-            height: 500.h,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              color: AppColor.c000000.withOpacity(0.5),
-              borderRadius: BorderRadius.circular(12.r),
+            UIHelper.verticalSpace(20.h),
+            Text(
+              'Create Your NuMynd Account',
+              style: TextFontStyle.textStyle12w400LatoItalic.copyWith(
+                fontSize: 24.sp,
+                fontWeight: FontWeight.bold,
+                color: AppColor.cFFFFFF,
+              ),
             ),
-            child: Center(
-              child: Form(
-                key: _formKey,
-                child: Padding(
-                  padding: const EdgeInsets.all(18.0),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(
-                        'Sign in to reset your spiral',
-                        style: TextFontStyle.textStyle12w400Lato.copyWith(
-                          fontSize: 16.sp,
-                          fontWeight: FontWeight.w400,
-                          color: AppColor.cFFFFFF,
-                        ),
-                      ),
-                      UIHelper.verticalSpace(20.h),
-                      CustomTextField(
-                        controller: _nameCtrl,
-                        hintText: 'Enter full name',
-                        obscureText: false,
-                        fieldColor: AppColor.c000000.withOpacity(0.3),
-                      ),
+            UIHelper.verticalSpace(40.h),
 
-                      UIHelper.verticalSpace(10.h),
-                      // Email
-                      CustomTextField(
-                        controller: _emailCtrl,
-                        hintText: 'Email',
-                        obscureText: false,
-                        fieldColor: AppColor.c000000.withOpacity(0.3),
-                        validator: (v) {
-                          if ((v ?? '').isEmpty) return 'Email is required';
-                          if (!RegExp(r'^\S+@\S+\.\S+$').hasMatch(v!)) {
-                            return 'Enter a valid email';
-                          }
-                          return null;
-                        },
-                      ),
-
-                      UIHelper.verticalSpace(10.h),
-
-                      // Password with toggle
-                      CustomTextField(
-                        controller: _passwordCtrl,
-                        hintText: 'Password',
-                        isPassword: true,
-                        obscureText: _obscurePassword,
-                        toggleVisibility: _togglePasswordVisibility,
-                        fieldColor: AppColor.c000000.withOpacity(0.3),
-                        validator: (v) {
-                          if ((v ?? '').isEmpty) return 'Password required';
-                          if (v!.length < 6) return 'Minimum 6 characters';
-                          return null;
-                        },
-                      ),
-
-                      // UIHelper.verticalSpace(5.h),
-                      // Align(
-                      //   alignment: Alignment.centerRight,
-                      //   child: Text(
-                      //     'Forget Password?',
-                      //     style: TextFontStyle.textStyle12w400Lato.copyWith(
-                      //       fontSize: 12.sp,
-                      //       fontWeight: FontWeight.bold,
-                      //       color: AppColor.cFFFFFF,
-                      //     ),
-                      //   ),
-                      // ),
-
-                      UIHelper.verticalSpace(20.h),
-
-                      // Login Button OR Loader (same space)
-                      SizedBox(
-                        width: double.infinity,
-                        height: 48.h,
-                        child: _isLoading
-                            ? Container(
-                                decoration: BoxDecoration(
-                                  color: AppColor.cEAF3FB,
-                                  borderRadius: BorderRadius.circular(12.r),
-                                ),
-                                child: const Center(
-                                  child: SizedBox(
-                                    width: 22,
-                                    height: 22,
-                                    child: CircularProgressIndicator.adaptive(
-                                      strokeWidth: 2.6,
-                                    ),
-                                  ),
-                                ),
-                              )
-                            : CustomButton(
-                                name: 'Sign Up',
-                                onCallBack: _onSignup,
-                                context: context,
-                                color: AppColor.cEAF3FB,
-                                textStyle:
-                                    TextFontStyle.textStyle12w400Lato.copyWith(
-                                  color: AppColor.c000000,
-                                  fontSize: 16.sp,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                      ),
-
-                      UIHelper.verticalSpace(20.h),
-
-                      InkWell(
-                        onTap: () {
-                          NavigationService.goBack;
-                        },
-                        child: Text(
-                          'Already have an account? Log In',
+            // Glass container
+            Container(
+              height: 500.h,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: AppColor.c000000.withOpacity(0.5),
+                borderRadius: BorderRadius.circular(12.r),
+              ),
+              child: Center(
+                child: Form(
+                  key: _formKey,
+                  child: Padding(
+                    padding: const EdgeInsets.all(18.0),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          'Sign in to reset your spiral',
                           style: TextFontStyle.textStyle12w400Lato.copyWith(
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w800,
+                            fontSize: 16.sp,
+                            fontWeight: FontWeight.w400,
                             color: AppColor.cFFFFFF,
                           ),
                         ),
-                      ),
-                    ],
+                        UIHelper.verticalSpace(20.h),
+                        CustomTextField(
+                          controller: _nameCtrl,
+                          hintText: 'Enter full name',
+                          obscureText: false,
+                          fieldColor: AppColor.c000000.withOpacity(0.3),
+                        ),
+
+                        UIHelper.verticalSpace(10.h),
+                        // Email
+                        CustomTextField(
+                          controller: _emailCtrl,
+                          hintText: 'Email',
+                          obscureText: false,
+                          fieldColor: AppColor.c000000.withOpacity(0.3),
+                          validator: (v) {
+                            if ((v ?? '').isEmpty) return 'Email is required';
+                            if (!RegExp(r'^\S+@\S+\.\S+$').hasMatch(v!)) {
+                              return 'Enter a valid email';
+                            }
+                            return null;
+                          },
+                        ),
+
+                        UIHelper.verticalSpace(10.h),
+
+                        // Password with toggle
+                        CustomTextField(
+                          controller: _passwordCtrl,
+                          hintText: 'Password',
+                          isPassword: true,
+                          obscureText: _obscurePassword,
+                          toggleVisibility: _togglePasswordVisibility,
+                          fieldColor: AppColor.c000000.withOpacity(0.3),
+                          validator: (v) {
+                            if ((v ?? '').isEmpty) return 'Password required';
+                            if (v!.length < 6) return 'Minimum 6 characters';
+                            return null;
+                          },
+                        ),
+
+                        // UIHelper.verticalSpace(5.h),
+                        // Align(
+                        //   alignment: Alignment.centerRight,
+                        //   child: Text(
+                        //     'Forget Password?',
+                        //     style: TextFontStyle.textStyle12w400Lato.copyWith(
+                        //       fontSize: 12.sp,
+                        //       fontWeight: FontWeight.bold,
+                        //       color: AppColor.cFFFFFF,
+                        //     ),
+                        //   ),
+                        // ),
+
+                        UIHelper.verticalSpace(20.h),
+
+                        // Login Button OR Loader (same space)
+                        SizedBox(
+                          width: double.infinity,
+                          height: 48.h,
+                          child: _isLoading
+                              ? Container(
+                                  decoration: BoxDecoration(
+                                    color: AppColor.cEAF3FB,
+                                    borderRadius: BorderRadius.circular(12.r),
+                                  ),
+                                  child: const Center(
+                                    child: SizedBox(
+                                      width: 22,
+                                      height: 22,
+                                      child: CircularProgressIndicator.adaptive(
+                                        strokeWidth: 2.6,
+                                      ),
+                                    ),
+                                  ),
+                                )
+                              : CustomButton(
+                                  name: 'Sign Up',
+                                  onCallBack: _onSignup,
+                                  context: context,
+                                  color: AppColor.cEAF3FB,
+                                  textStyle: TextFontStyle.textStyle12w400Lato
+                                      .copyWith(
+                                    color: AppColor.c000000,
+                                    fontSize: 16.sp,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                        ),
+
+                        UIHelper.verticalSpace(20.h),
+
+                        InkWell(
+                          onTap: () {
+                            NavigationService.goBack;
+                          },
+                          child: Text(
+                            'Already have an account? Log In',
+                            style: TextFontStyle.textStyle12w400Lato.copyWith(
+                              fontSize: 12.sp,
+                              fontWeight: FontWeight.w800,
+                              color: AppColor.cFFFFFF,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
