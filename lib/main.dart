@@ -13,7 +13,6 @@ import 'package:numynd/loading_screen.dart';
 import 'package:numynd/networks/dio/dio.dart';
 import 'package:numynd/networks/internet_checker/internet_checker_controller.dart';
 import 'package:provider/provider.dart';
-
 import 'helpers/all_routes.dart';
 import 'helpers/di.dart';
 import 'helpers/helper_methods.dart';
@@ -22,10 +21,11 @@ import 'helpers/register_provider.dart';
 
 late MyAudioHandler audioHandler;
 
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Initialize Audio Service
+  //* Initialize Audio Service
   audioHandler = await AudioService.init(
     builder: () => MyAudioHandler.instance,
     config: const AudioServiceConfig(
@@ -36,7 +36,7 @@ Future<void> main() async {
     ),
   );
 
-  // System UI configuration
+  //* System UI configuration
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
@@ -44,13 +44,13 @@ Future<void> main() async {
     ),
   );
 
-  // Internet Controller
+  //* Internet Controller
   Get.put(
     InternetController(),
     permanent: true,
   );
 
-  // Firebase
+  //* Firebase
   try {
     print('Initializing Firebase...');
 
